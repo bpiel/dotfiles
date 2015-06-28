@@ -101,6 +101,7 @@ alias lsmall='ls -lSh'
 alias lbig='ls -lShr'
 
 alias r='cd /home/bill/repos'
+alias diffscl='diff --suppress-common-lines'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
