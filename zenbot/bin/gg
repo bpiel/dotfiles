@@ -1,0 +1,7 @@
+#!/bin/bash
+
+case $PWD/ in
+ */repos/sweet-liberty*) grep -rn --color=auto --exclude=*.html --exclude=*.log --exclude-dir=.git --exclude=*.js  $1 . ;;
+ */repos/*) grep -rn --color=auto --exclude-dir=.git  $1 . ;;
+ /home/*) grep -rn --color=auto  $1 . ;;
+esac
