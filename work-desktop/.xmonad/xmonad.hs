@@ -27,6 +27,8 @@ import XMonad.Util.NamedWindows          (getName)
 import Codec.Binary.UTF8.String          (encodeString)
 import Data.Maybe                        (isJust, catMaybes)
 import XMonad.Layout.NoFrillsDecoration
+import XMonad.Util.Paste                 (sendKey)
+
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -115,7 +117,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Move focus to the master window
     , ((modm,               xK_m     ), windows W.focusMaster  )
 
-    -- Bill experiment
+    -- START Bill keys
+
+    -- short cuts for windows 1 thru 6
     , ((modm,               xK_u     ), windows (W.greedyView "1")  )
     , ((modm .|. shiftMask, xK_u     ), windows (W.shift "1")  )
     , ((modm,               xK_i     ), windows (W.greedyView "2")  )
@@ -128,6 +132,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_y     ), windows (W.shift "5")  )
     , ((modm,               xK_bracketleft     ), windows (W.greedyView "6")  )
     , ((modm .|. shiftMask, xK_bracketleft     ), windows (W.shift "6")  )
+
+    -- vim cursor key bindings
+    , ((modm .|. controlMask, xK_j     ), sendKey noModMask xK_Down)
+    , ((modm .|. controlMask, xK_k     ), sendKey noModMask xK_Up)
+    , ((modm .|. controlMask, xK_h     ), sendKey noModMask xK_Left)
+    , ((modm .|. controlMask, xK_l     ), sendKey noModMask xK_Right)
+
+    -- END Bill keys
 
     -- Swap the focused window and the master window
     , ((modm,               xK_Return), windows W.swapMaster)
