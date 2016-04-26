@@ -139,8 +139,6 @@ export GPG_TTY
 
 # end GPG
 
-. ~/secrets.sh
-
 # add ~/bin to path
 export PATH=$PATH:~/bin
 
