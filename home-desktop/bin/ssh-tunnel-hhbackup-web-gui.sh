@@ -1,1 +1,2 @@
-ssh -nNTL 16080:localhost:8384 hhbackup@192.168.1.11 -p 22160
+set -x
+ssh -nNTL 16080:localhost:8384 hhbackup@hhbackup -p 22160
