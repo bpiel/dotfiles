@@ -73,7 +73,7 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#8080ff"
+myFocusedBorderColor = "#386890"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -112,7 +112,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Move focus to the master window
     , ((modm,               xK_m     ), windows W.focusMaster  )
 
-    -- Bill experiment
+    -- Bill stuff
     , ((modm,               xK_u     ), windows (W.greedyView "1")  )
     , ((modm .|. shiftMask, xK_u     ), windows (W.shift "1")  )
     , ((modm,               xK_i     ), windows (W.greedyView "2")  )
@@ -125,6 +125,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_y     ), windows (W.shift "5")  )
     , ((modm,               xK_bracketleft     ), windows (W.greedyView "6")  )
     , ((modm .|. shiftMask, xK_bracketleft     ), windows (W.shift "6")  )
+
+    , ((modm .|. shiftMask, xK_m     ), spawn "/home/bill/bin/mouse-toggle.sh.clj")
+    , ((modm, xK_F2     ), spawn "/home/bill/bin/wifi-off.sh")
+    , ((modm, xK_F3     ), spawn "/home/bill/bin/wifi-on.sh")
+    , ((modm, xK_F5     ), spawn "/home/bill/bin/backlight-dec.sh")
+    , ((modm, xK_F6     ), spawn "/home/bill/bin/backlight-inc.sh")
+    , ((modm, xK_F7     ), spawn "/home/bill/bin/backlight-off.sh")
 
     -- Swap the focused window and the master window
     , ((modm,               xK_Return), windows W.swapMaster)
@@ -230,7 +237,7 @@ myTheme = defaultTheme {
             activeColor         = "SteelBlue"
           , activeBorderColor   = "#386890"
           , inactiveBorderColor = "#555555"
-          , fontName            = "xft:DejaVu Sans-8:bold"
+          , fontName            = "xft:Monospace-13:bold"
           }
 
 

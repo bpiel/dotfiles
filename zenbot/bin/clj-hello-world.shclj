@@ -1,0 +1,5 @@
+#!/usr/bin/clojure-drip
+
+# (use '[clojure.java.shell :only [sh]])
+(println "hello world")
+(println (sh "ls"))
