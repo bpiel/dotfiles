@@ -92,7 +92,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --, ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
     -- lock screen
-    , ((modm .|. controlMask, xK_l     ), spawn "/home/bill/bin/lock.sh")
+    , ((modm .|. controlMask .|. mod1Mask, xK_l     ), spawn "/home/bill/bin/lock.sh")
 
    -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
