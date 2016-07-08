@@ -6,15 +6,13 @@ Config { font = "xft:inconsolata:size=10:antialias=true"
 , commands = [ Run Weather "KPHL" ["-t","<tempF>F <skyCondition>","-L","40","-H","75","--normal","green","--high","red","--low","lightblue"] 36000
              , Run Date "%a %b %_d %Y %I:%M:%S" "date" 10
 	     , Run BatteryP ["BAT0"] ["-t", "<acstatus> <left>% / <timeleft>", "--", "-o", "", "-O", "CHARGING"] 600
-             , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
-             , Run Network "eth1" ["-L","0","-H","32","--normal","green","--high","red"] 10
              , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
              , Run Memory ["-t","Mem: <usedratio>%"] 10
              , Run Swap [ ] 10
              , Run StdinReader
-	     , Run Com "/home/bill/bin/wireless.sh" [] "wifi" 60
+	     , Run Com "/home/bill/bin/wifi-status.sh.clj" [] "wifi" 45
              ]
 , sepChar = "%"
 , alignSep = "}{"
-, template = "%StdinReader% }{ %wifi% | %cpu% %memory% %swap% | %battery% | %KPHL% | <fc=#ee9a00>%date%</fc>"
+, template = "%StdinReader% }{ %wifi% | %cpu% %memory% %swap% | %battery% | <fc=#ee9a00>%date%</fc>"
 }
