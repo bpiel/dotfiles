@@ -11,7 +11,7 @@ Config { font = "xft:inconsolata:size=10:antialias=true"
              , Run Swap [ ] 10
              , Run Date "%a %b %_d %Y %I:%M:%S" "date" 10
              , Run StdinReader
-			 , Run Com "python" ["/home/bill/bin/get-weather.py"] "weather1" 12000
+	     , Run Com "python" ["/home/bill/bin/get-weather.py"] "weather1" 12000
              ]
 , sepChar = "%"
 , alignSep = "}{"
