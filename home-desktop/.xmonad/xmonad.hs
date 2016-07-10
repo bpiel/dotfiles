@@ -27,10 +27,12 @@ import XMonad.Util.NamedWindows          (getName)
 import Codec.Binary.UTF8.String          (encodeString)
 import Data.Maybe                        (isJust, catMaybes)
 import XMonad.Layout.NoFrillsDecoration
+import XMonad.Util.Paste                 (sendKey)
 
 -- fixes chrome focus problem
 -- https://code.google.com/p/xmonad/issues/detail?id=603
 import XMonad.Hooks.EwmhDesktops         (ewmh)
+
 
 
 -- The preferred terminal program, which is used in a binding below and by
@@ -130,6 +132,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_y     ), windows (W.shift "5")  )
     , ((modm,               xK_bracketleft     ), windows (W.greedyView "6")  )
     , ((modm .|. shiftMask, xK_bracketleft     ), windows (W.shift "6")  )
+
+    -- vim cursor key bindings
+    , ((modm .|. controlMask, xK_j     ), sendKey noModMask xK_Down)
+    , ((modm .|. controlMask, xK_k     ), sendKey noModMask xK_Up)
+    , ((modm .|. controlMask, xK_h     ), sendKey noModMask xK_Left)
+    , ((modm .|. controlMask, xK_l     ), sendKey noModMask xK_Right)
+
+
 
     -- Swap the focused window and the master window
     , ((modm,               xK_Return), windows W.swapMaster)
