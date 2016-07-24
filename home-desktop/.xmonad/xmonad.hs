@@ -28,6 +28,7 @@ import Codec.Binary.UTF8.String          (encodeString)
 import Data.Maybe                        (isJust, catMaybes)
 import XMonad.Layout.NoFrillsDecoration
 import XMonad.Util.Paste                 (sendKey)
+import XMonad.Actions.UpdatePointer
 
 -- fixes chrome focus problem
 -- https://code.google.com/p/xmonad/issues/detail?id=603
@@ -289,7 +290,8 @@ myFocusFollowsMouse = True
 myLogHook pps = do
   screens <- (sortBy (comparing S.screen) . S.screens) `fmap` gets windowset
   zipWithM_ dynamicLogWithPP' screens pps
-
+  >> updatePointer (Relative 0.89 0.85)
+  
 ------------------------------------------------------------------------
 -- Startup hook
 
