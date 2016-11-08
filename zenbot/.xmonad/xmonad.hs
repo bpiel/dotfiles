@@ -27,6 +27,7 @@ import XMonad.Util.NamedWindows          (getName)
 import Codec.Binary.UTF8.String          (encodeString)
 import Data.Maybe                        (isJust, catMaybes)
 import XMonad.Layout.NoFrillsDecoration
+import XMonad.Util.Paste                 (sendKey)
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -132,6 +133,16 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_F5     ), spawn "/home/bill/bin/backlight-dec.sh")
     , ((modm, xK_F6     ), spawn "/home/bill/bin/backlight-inc.sh")
     , ((modm, xK_F7     ), spawn "/home/bill/bin/backlight-off.sh")
+
+
+    -- vim cursor key bindings
+    , ((modm .|. controlMask, xK_j     ), sendKey noModMask xK_Down)
+    , ((modm .|. controlMask, xK_k     ), sendKey noModMask xK_Up)
+    , ((modm .|. controlMask, xK_h     ), sendKey noModMask xK_Left)
+    , ((modm .|. controlMask, xK_l     ), sendKey noModMask xK_Right)
+
+    -- END Bill stuff
+
 
     -- Swap the focused window and the master window
     , ((modm,               xK_Return), windows W.swapMaster)

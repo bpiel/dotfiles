@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /home/bill
+rm .emacs.d
+ln -s /home/bill/repos/emacs-live .emacs.d
