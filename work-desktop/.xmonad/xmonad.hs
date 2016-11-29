@@ -29,6 +29,11 @@ import Data.Maybe                        (isJust, catMaybes)
 import XMonad.Layout.NoFrillsDecoration
 import XMonad.Util.Paste                 (sendKey)
 
+-- fixes chrome focus problem
+-- https://code.google.com/p/xmonad/issues/detail?id=603
+import XMonad.Hooks.EwmhDesktops         (ewmh)
+
+
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -37,7 +42,7 @@ myTerminal      = "gnome-terminal"
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 2
+myBorderWidth   = 1
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -74,8 +79,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#666666"
-myFocusedBorderColor = "#4080aa"
+myNormalBorderColor  = "#dddddd"
+myFocusedBorderColor = "#ff0000"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -91,10 +96,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch gmrun
     --, ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
-    -- lock screen
-    , ((modm .|. controlMask .|. mod1Mask, xK_l     ), spawn "/home/bill/bin/lock.sh")
-
-   -- close focused window
+    -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
 
      -- Rotate through the available layout algorithms
@@ -117,9 +119,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Move focus to the master window
     , ((modm,               xK_m     ), windows W.focusMaster  )
 
-    -- START Bill keys
-
-    -- short cuts for windows 1 thru 6
+    -- Bill experiment
     , ((modm,               xK_u     ), windows (W.greedyView "1")  )
     , ((modm .|. shiftMask, xK_u     ), windows (W.shift "1")  )
     , ((modm,               xK_i     ), windows (W.greedyView "2")  )
@@ -139,7 +139,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_h     ), sendKey noModMask xK_Left)
     , ((modm .|. controlMask, xK_l     ), sendKey noModMask xK_Right)
 
-    -- END Bill keys
+
 
     -- Swap the focused window and the master window
     , ((modm,               xK_Return), windows W.swapMaster)
@@ -190,7 +190,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0,1] -- default is [0..], set as [0,1] changed to flip screen order
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0] -- was [0..], changed to flip screen order
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
@@ -308,9 +308,9 @@ myStartupHook = return ()
 --    xmproc <- spawnPipe "/usr/bin/xmobar /home/bill/.xmobarcc"
 
 main = do
-    xmobar1 <- spawnPipe "/usr/bin/xmobar -x 1 /home/bill/.xmobarcc"
-    xmobar0 <- spawnPipe "/usr/bin/xmobar -x 0 /home/bill/.xmobarcc-2"
-    xmonad $ defaults xmobar0 xmobar1
+    xmobar1 <- spawnPipe "/usr/bin/xmobar -x 1 /home/bill/.xmobarcc-2"
+    xmobar0 <- spawnPipe "/usr/bin/xmobar -x 0 /home/bill/.xmobarcc"
+    xmonad $ ewmh $ defaults xmobar0 xmobar1
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
