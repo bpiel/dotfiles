@@ -132,8 +132,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_y     ), windows (W.greedyView "5")  )
     , ((modm .|. shiftMask, xK_y     ), windows (W.shift "5")  )
     , ((modm,               xK_bracketleft     ), windows (W.greedyView "6")  )
+    , ((modm,               xK_backslash     ), windows (W.greedyView "6")  )
     , ((modm .|. shiftMask, xK_bracketleft     ), windows (W.shift "6")  )
-
+    , ((modm .|. shiftMask, xK_backslash     ), windows (W.shift "6")  )
+    
     -- vim cursor key bindings
     , ((modm .|. controlMask, xK_j     ), sendKey noModMask xK_Down)
     , ((modm .|. controlMask, xK_k     ), sendKey noModMask xK_Up)
