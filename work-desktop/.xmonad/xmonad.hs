@@ -131,8 +131,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_y     ), windows (W.greedyView "5")  )
     , ((modm .|. shiftMask, xK_y     ), windows (W.shift "5")  )
     , ((modm,               xK_bracketleft     ), windows (W.greedyView "6")  )
+    , ((modm,               xK_backslash     ), windows (W.greedyView "6")  )
     , ((modm .|. shiftMask, xK_bracketleft     ), windows (W.shift "6")  )
-
+    , ((modm .|. shiftMask, xK_backslash     ), windows (W.shift "6")  )
+        
     -- vim cursor key bindings
     , ((modm .|. controlMask, xK_j     ), sendKey noModMask xK_Down)
     , ((modm .|. controlMask, xK_k     ), sendKey noModMask xK_Up)
@@ -190,7 +192,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0] -- was [0..], changed to flip screen order
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..] -- was [0..], changed to flip screen order -- [1,0]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
