@@ -175,7 +175,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0] -- was [0..], changed to flip screen order
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0,1] -- was [0..], changed to flip screen order
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
  
  
@@ -321,6 +321,11 @@ defaults bar0 bar1 = defaultConfig {
       -- hooks, layouts
         layoutHook         = myLayoutHook, -- layout & manage hooks changed to show xmobar
         -- manageHook         = myManageHook,
+        
+        -- https://chipsenkbeil.com/note/fix-for-xmonad-with-xmobar/
+        handleEventHook = mconcat
+                          [ docksEventHook        
+                          , handleEventHook defaultConfig ],
 
 --        logHook            = dynamicLogWithPP xmobarPP
 --        { ppOutput = hPutStrLn xmproc
