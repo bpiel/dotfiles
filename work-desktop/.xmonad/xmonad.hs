@@ -342,6 +342,12 @@ defaults bar0 bar1 = defaultConfig {
         layoutHook         = myLayoutHook, -- layout & manage hooks changed to show xmobar
         -- manageHook         = myManageHook,
 
+      -- https://chipsenkbeil.com/note/fix-for-xmonad-with-xmobar/
+         handleEventHook = mconcat
+                           [ docksEventHook        
+                           , handleEventHook defaultConfig ],
+
+
 --        logHook            = dynamicLogWithPP xmobarPP
 --        { ppOutput = hPutStrLn xmproc
 --          , ppTitle = xmobarColor "green" "" . shorten 50
