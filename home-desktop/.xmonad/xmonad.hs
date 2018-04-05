@@ -81,7 +81,7 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myFocusedBorderColor = "#386890"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -292,7 +292,7 @@ myFocusFollowsMouse = True
 myLogHook pps = do
   screens <- (sortBy (comparing S.screen) . S.screens) `fmap` gets windowset
   zipWithM_ dynamicLogWithPP' screens pps
-  >> updatePointer (Relative 0.89 0.85)
+
   
 ------------------------------------------------------------------------
 -- Startup hook
@@ -340,6 +340,11 @@ defaults bar0 bar1 = defaultConfig {
       -- hooks, layouts
         layoutHook         = myLayoutHook, -- layout & manage hooks changed to show xmobar
         -- manageHook         = myManageHook,
+
+      -- https://chipsenkbeil.com/note/fix-for-xmonad-with-xmobar/
+         handleEventHook = mconcat
+                           [ docksEventHook        
+                           , handleEventHook defaultConfig ],
 
 --        logHook            = dynamicLogWithPP xmobarPP
 --        { ppOutput = hPutStrLn xmproc
