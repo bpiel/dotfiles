@@ -1,8 +1,8 @@
 # set resolution
-xrandr --output eDP1 --mode 1600x900
+xrandr --output eDP-1 --mode 1440x900
 
-feh --bg-scale /home/bill/Pictures/gray.jpg
+# feh --bg-scale /home/bill/Pictures/gray.jpg
 
-if [ $(ps aux | grep [a]lbert | wc -l) -eq 0 ]; then
-  albert
-fi
+# if [ $(ps aux | grep [a]lbert | wc -l) -eq 0 ]; then
+#  albert
+# fi
