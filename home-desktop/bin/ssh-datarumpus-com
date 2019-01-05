@@ -1,0 +1,1 @@
+ssh -i ~/.ssh/billbillpielcom-2015-07-16.pem ubuntu@ec2-34-213-111-55.us-west-2.compute.amazonaws.com
