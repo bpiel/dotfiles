@@ -1,5 +1,5 @@
 # set resolution
-xrandr --output eDP-1 --mode 1440x900
+xrandr --output eDP-1 --mode 1680x1050
 
 # feh --bg-scale /home/bill/Pictures/gray.jpg
 

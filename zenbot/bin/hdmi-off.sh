@@ -1,2 +1,2 @@
-xrandr --output HDMI1 --off
+xrandr --output HDMI-1 --off
 
