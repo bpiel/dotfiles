@@ -34,7 +34,7 @@ import XMonad.Actions.UpdatePointer
 -- https://code.google.com/p/xmonad/issues/detail?id=603
 import XMonad.Hooks.EwmhDesktops         (ewmh)
 
-
+import XMonad.Config.Kde
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -242,7 +242,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 myLayoutHook =
           avoidStruts
           $ noFrillsDeco shrinkText myTheme
-          $ layoutHook defaultConfig
+          $ layoutHook kdeConfig
 
 myTheme = defaultTheme {
             activeColor         = "SteelBlue"
@@ -322,7 +322,7 @@ main = do
 --
 -- No need to modify this.
 --
-defaults bar0 bar1 = defaultConfig {
+defaults bar0 bar1 = kdeConfig {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
@@ -344,7 +344,7 @@ defaults bar0 bar1 = defaultConfig {
       -- https://chipsenkbeil.com/note/fix-for-xmonad-with-xmobar/
          handleEventHook = mconcat
                            [ docksEventHook        
-                           , handleEventHook defaultConfig ],
+                           , handleEventHook kdeConfig ],
 
 --        logHook            = dynamicLogWithPP xmobarPP
 --        { ppOutput = hPutStrLn xmproc
@@ -353,8 +353,8 @@ defaults bar0 bar1 = defaultConfig {
         logHook            = myLogHook [ pp { ppOutput = hPutStrLn bar0 }
                                        , pp { ppOutput = hPutStrLn bar1 }],
 
-        manageHook = manageDocks <+> manageHook defaultConfig,
---        layoutHook = avoidStruts  $  layoutHook defaultConfig,
+        manageHook = manageDocks <+> manageHook kdeConfig,
+--        layoutHook = avoidStruts  $  layoutHook kdeConfig,
         startupHook        = myStartupHook
     }
 
