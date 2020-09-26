@@ -1,4 +1,4 @@
-Config { font = "xft:inconsolata:size=13:antialias=true"
+Config { font = "xft:Monospace:size=11:antialias=true:"
 , bgColor = "black"
 , fgColor = "grey"
 , position = Top
@@ -11,9 +11,8 @@ Config { font = "xft:inconsolata:size=13:antialias=true"
              , Run Swap [ ] 10
              , Run Date "%a %b %_d %Y %I:%M:%S" "date" 10
              , Run StdinReader
-			 , Run Com "python" ["/home/bill/repos/get-weather.py"] "weather1" 12000
              ]
 , sepChar = "%"
 , alignSep = "}{"
-, template = "%StdinReader% }{ %weather1%  %KPHL% | <fc=#ee9a00>%date%</fc>"
+, template = "%StdinReader% }{ %KPHL% | <fc=#ee9a00>%date%</fc>"
 }

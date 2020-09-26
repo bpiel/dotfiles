@@ -162,3 +162,5 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Wasmer
 export WASMER_DIR="/home/bill/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+export PATH=$PATH:/home/bill/bin:/home/bill/.cargo/bin

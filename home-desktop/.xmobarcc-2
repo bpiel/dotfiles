@@ -1,11 +1,10 @@
-Config { font = "xft:inconsolata:size=13:antialias=true"
+Config { font = "xft:Monospace:size=11:antialias=true"
 , bgColor = "black"
 , fgColor = "grey"
 , position = Top
 , lowerOnStart = False
 , commands = [ Run Weather "KPHL" ["-t","<tempF>F <skyCondition>","-L","40","-H","75","--normal","green","--high","red","--low","lightblue"] 36000
-             , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
-             , Run Network "eth1" ["-L","0","-H","32","--normal","green","--high","red"] 10
+             , Run Network "enp0s31f6" ["-L","0","-H","32000","--normal","green","--high","red"] 10
              , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
              , Run Memory ["-t","Mem: <usedratio>%"] 10
              , Run Swap [ ] 10
@@ -14,5 +13,5 @@ Config { font = "xft:inconsolata:size=13:antialias=true"
              ]
 , sepChar = "%"
 , alignSep = "}{"
-, template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %eth0%"
+, template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %enp0s31f6%"
 }
